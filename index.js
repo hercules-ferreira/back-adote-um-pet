@@ -1,4 +1,4 @@
-require("./db/conn");
+const conn = require("./db/conn");
 
 const express = require("express");
 const cors = require("cors");
@@ -27,4 +27,6 @@ app.use("/users", UserRoutes);
 
 const PORT = process.env.PORT;
 
-app.listen(PORT, () => console.log(`Servidor executando na porta: ${PORT}`));
+conn().then(() => {
+  app.listen(PORT, () => console.log(`Servidor executando na porta: ${PORT}`));
+});
