@@ -26,7 +26,6 @@ const Fish = mongoose.model(
       },
       images: {
         type: Array,
-        required: false,
       },
       available: {
         type: Boolean,

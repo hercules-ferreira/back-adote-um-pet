@@ -1,14 +1,29 @@
 const router = require("express").Router();
 
-const FishController = require("../controllers/FishController");
+const FishController = require("../controllers/FishControllerNew");
 
 // middlewares
 const verifyToken = require("../helpers/checkToken");
 const { imageUpload } = require("../helpers/imageUpload");
+const uploadingImagefish = require("../middlewares/cloudinary.middleware");
 
 // Router Private
+
+//
+//
+// new
 router.post(
-  "/create",
+  "/createfish",
+  verifyToken,
+  uploadingImagefish.single("images"),
+  FishController.create
+);
+
+//
+//
+
+router.post(
+  "/createfish",
   verifyToken,
   imageUpload.array("images"),
   FishController.create

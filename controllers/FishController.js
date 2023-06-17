@@ -43,7 +43,7 @@ module.exports = class FishController {
 
     // console.log(images);
 
-    if (images.length === 0) {
+    if (images) {
       res.status(422).json({ message: "A imagem é obrigatória!" });
       return;
     }
