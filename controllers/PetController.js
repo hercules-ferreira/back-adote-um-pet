@@ -15,6 +15,7 @@ module.exports = class PetController {
     const color = req.body.color;
     const images = req.file;
     const available = true;
+    // console.log(req.file);
 
     // console.log(req.body)
     // console.log(images);
@@ -43,10 +44,10 @@ module.exports = class PetController {
 
     // console.log(images);
 
-    if (!images) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
-    }
+    // if (images) {
+    //   res.status(422).json({ message: "A imagem é obrigatória!" });
+    //   return;
+    // }
 
     // get user Owner
     const token = getToken(req);
@@ -221,9 +222,9 @@ module.exports = class PetController {
 
     // console.log(images);
 
-    if (images.length === 0) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
+    if (images) {
+      // res.status(422).json({ message: "A imagem é obrigatória!" });
+      // return;
     } else {
       updateData.images = [];
       images.map((image) => {
