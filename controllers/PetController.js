@@ -13,7 +13,7 @@ module.exports = class PetController {
     const description = req.body.description;
     const weight = req.body.weight;
     const color = req.body.color;
-    const images = req.files;
+    const images = req.file;
     const available = true;
 
     // console.log(req.body)
@@ -43,7 +43,7 @@ module.exports = class PetController {
 
     // console.log(images);
 
-    if (images.length === 0) {
+    if (!images) {
       res.status(422).json({ message: "A imagem é obrigatória!" });
       return;
     }
@@ -68,10 +68,11 @@ module.exports = class PetController {
         phone: user.phone,
       },
     });
-
-    images.map((image) => {
-      pet.images.push(image.filename);
-    });
+    console.log(images);
+    // images.map((image) => {
+    // console.log(image);
+    pet.images.push(images.path);
+    // });
 
     try {
       const newPet = await pet.save();

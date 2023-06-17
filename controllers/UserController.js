@@ -166,7 +166,8 @@ module.exports = class UserController {
     let image = "";
 
     if (req.file) {
-      image = req.file.filename;
+      // console.log(req.file);
+      image = req.file.path;
     }
 
     // validations
@@ -195,8 +196,8 @@ module.exports = class UserController {
     user.email = email;
 
     if (image) {
-      const imageName = req.file.filename;
-      user.image = imageName;
+      // const imageName = req.file.filename;
+      user.image = image;
     }
 
     if (!phone) {
