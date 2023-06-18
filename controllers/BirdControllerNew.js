@@ -13,8 +13,9 @@ module.exports = class BirdController {
     const description = req.body.description;
     const weight = req.body.weight;
     const color = req.body.color;
-    const images = req.files;
+    const images = req.file;
     const available = true;
+    // console.log(req.file);
 
     // console.log(req.body)
     // console.log(images);
@@ -43,16 +44,16 @@ module.exports = class BirdController {
 
     // console.log(images);
 
-    if (images) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
-    }
+    // if (images) {
+    //   res.status(422).json({ message: "A imagem é obrigatória!" });
+    //   return;
+    // }
 
     // get user Owner
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    // create Bird
+    // create bird
     const bird = new Bird({
       name: name,
       age: age,
@@ -69,14 +70,22 @@ module.exports = class BirdController {
       },
     });
 
-    images.map((image) => {
-      bird.images.push(image.filename);
-    });
+    console.log(images);
+    // images.map((image) => {
+    // console.log(image);
+    bird.images.push(images.path);
+    // });
+
+    // console.log(images);
+    // images.map((image) => {
+    // console.log(image);
+    // bird.images.push(images.filename);
+    // });
 
     try {
       const newBird = await bird.save();
       res.status(201).json({
-        message: "Passáro cadastrado com com sucesso!",
+        message: "Pássaro cadastrado com sucesso!",
         newBird: newBird,
       });
     } catch (error) {
@@ -90,7 +99,7 @@ module.exports = class BirdController {
     res.status(200).json({ birds: birds });
   }
 
-  // list User Birds
+  // list User birds
   static async getAllUserBirds(req, res) {
     // get User from token
     const token = getToken(req);
@@ -113,7 +122,7 @@ module.exports = class BirdController {
     });
   }
 
-  // get Bird by Id
+  // get Pássaro by Id
   static async getBirdById(req, res) {
     const id = req.params.id;
 
@@ -123,7 +132,7 @@ module.exports = class BirdController {
       return;
     }
 
-    // check if Bird exists
+    // check if bird exists
     const bird = await Bird.findOne({ _id: id });
     if (!bird) {
       res.status(404).json({ message: "Pássaro não Encontrado!" });
@@ -131,30 +140,30 @@ module.exports = class BirdController {
     res.status(200).json(bird);
   }
 
-  // remove Bird by Id
+  // remove bird by Id
   static async removeBirdById(req, res) {
     const id = req.params.id;
 
-    // check if Id is valid
+    // check if id is valid
     if (!ObjectId.isValid(id)) {
-      res.status(422).json({ message: "Id inválido!" });
+      res.status(422).json({ message: "ID inválido!" });
       return;
     }
 
-    // check is Bird exists
+    // check if Bird exists
     const bird = await Bird.findOne({ _id: id });
+
     if (!bird) {
-      res.status(404).json({ message: "Pássaro não encontrado" });
+      res.status(404).json({ message: "Pássaro não encontrado!" });
       return;
     }
 
-    //check if logged in user registered the Bird
+    // check if user registered this bird
     const token = getToken(req);
     const user = await getUserByToken(token);
 
-    // id to string / compare id Bird / id User Owner
-    if (bird.user._id.toString() !== user._id.toString()) {
-      res.status(422).json({
+    if (bird.user._id.toString() != user._id.toString()) {
+      res.status(404).json({
         message:
           "Houve um problema em processar a sua solicitação, tente novamente mais tarde!",
       });
@@ -162,11 +171,8 @@ module.exports = class BirdController {
     }
 
     await Bird.findByIdAndRemove(id);
-    res
-      .status(200)
-      .json(
-        `Você removeu o Pássaro: id: ${bird._id}; Nome: ${bird.name}, com sucesso!`
-      );
+
+    res.status(200).json({ message: "Pássaro removido com sucesso!" });
   }
 
   static async updateBird(req, res) {
@@ -175,11 +181,12 @@ module.exports = class BirdController {
     const images = req.files;
     const updateData = {};
 
-    // check if Bird exists
+    // check if bird exists
     const bird = await Bird.findOne({ _id: id });
     if (!bird) {
       res.status(404).json({ message: "Pássaro não encontrado" });
       return;
+      Pássaro;
     }
 
     //check if logged in user registered the bird
@@ -226,8 +233,8 @@ module.exports = class BirdController {
     // console.log(images);
 
     if (images) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
+      // res.status(422).json({ message: "A imagem é obrigatória!" });
+      // return;
     } else {
       updateData.images = [];
       images.map((image) => {
@@ -276,7 +283,7 @@ module.exports = class BirdController {
       }
     }
 
-    // add User to bird
+    // add User to Bird
     bird.adopter = {
       _id: user._id,
       name: user.name,

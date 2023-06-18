@@ -1,18 +1,34 @@
 const router = require("express").Router();
 
-const BirdController = require("../controllers/BirdController");
+const BirdController = require("../controllers/BirdControllerNew");
 
 // middlewares
 const verifyToken = require("../helpers/checkToken");
 const { imageUpload } = require("../helpers/imageUpload");
+const uploadingImagebird = require("../middlewares/cloudinary.middleware");
 
 // Router Private
+
+//
+//
+// new
 router.post(
-  "/create",
-  imageUpload.array("images"),
+  "/createbird",
   verifyToken,
+  uploadingImagebird.single("images"),
   BirdController.create
 );
+
+//
+//
+
+router.post(
+  "/create",
+  verifyToken,
+  imageUpload.array("images"),
+  BirdController.create
+);
+
 router.get("/mybirds", verifyToken, BirdController.getAllUserBirds);
 
 router.get("/myadoptions", verifyToken, BirdController.getAllUserAdoptions);
