@@ -10,6 +10,7 @@
 - [Atualizações](#Atualizações)
 - [Instalação](#Instalação)
 - [Como Usar o Site](#Como-usar-o-Site)
+- [Acessando o Site](#Acessando-usar-o-Site)
 - [Funcionalidades](#Funcionalidades)
 - [Novas Versões](#Novas-Versões)
 - [Issues](#Issues)
@@ -33,7 +34,9 @@
 <h1><span style="color:blue">
 <font size=30>🛠 Instalação</font></span></h1>
 
-📌 [Como usar o Site](https://github.com/ai/size-limit#readme) - Nosso Site não precisa de recursos extras, apenas clique nio link e já terá acesso a todas funcionalidades.
+📌 [Como usar o Site](https://github.com/ai/size-limit#readme) - Nosso Site não precisa de recursos extras, apenas clique no link e já terá acesso a todas funcionalidades.
+
+📌 [Acessando o Site](https://github.com/ai/size-limit#readme) - Nosso Site pode ser acessado diretamente pelo link: https://adote-new-pet.netlify.app/
 
 
 📌 [Funcionalidades](https://github.com/ai/size-limit#readme) - O usuário precisará apenas clicar no link de acesso, e fazer um cadastro para poder ver as opções do site.
@@ -45,7 +48,10 @@
 
 > :construction: Novas Versões do Site :construction:
 
-📌 [Objetivos](https://github.com/ai/size-limit#readme) do Site será, colocar uma área com vários níveis de privilégios, de acordo com o ranking do usuário, e suas conytribuições.
+📌 [Objetivos](https://github.com/ai/size-limit#readme) do Site será, colocar uma área com vários níveis de privilégios, de acordo com o ranking do usuário, e suas contribuições.
+
+
+
 
 
 <h1><span style="color:blue">
@@ -83,7 +89,7 @@
 
 
 ```javascript
-|          CRUD - USER       |
+|          CRUD - USER        |
 | --------------------------- | 
 
 | method | endpoint           | body        | response    | action                                 |
@@ -104,7 +110,7 @@
 | POST   | /pets             |  { pet }    |  { pet }    | cria um Pet no banco de dados          |
 | GET    | /pets             |    -/-      | [{ pet }]   | lista de Pets                          |
 | PUT    | /pets/:petId      |  { pet }    |  { pet }    | atualiza um Pet no banco de dados      |
-| DELETE | /pets/:petId      |     -/-     |  message    | remove um Pet do banco de dados        |
+| DELETE | /pets/:petId      |    -/-      |  message    | remove um Pet do banco de dados        |
    
 ```
 
@@ -118,7 +124,7 @@
 | POST   | /birds          |  { bird }   |  { bird }   | cria um Bird no banco de dados         |
 | GET    | /birds          |    -/-      | [{ bird }]  | lista de Birds                         |
 | PUT    | /birds/:birdId  |  { bird }   |  { bird }   | atualiza um Bird no banco de dados     |
-| DELETE | /birds/:birdId  |      -/-    |   message   | remove um Bird do banco de dados       |
+| DELETE | /birds/:birdId  |    -/-      |   message   | remove um Bird do banco de dados       |
    
 ```
 
@@ -131,7 +137,7 @@
 | POST   | /fishs          |  { fish }   |  { fish }   | cria um Fish no banco de dados         |
 | GET    | /fishs          |    -/-      | [{ fish }]  | lista de Fish                          |
 | PUT    | /fishs/:fishId  |  { fish }   |  { fish }   | atualiza um Fish no banco de dados     |
-| DELETE | /fishs/:fishId  |      -/-    |   message   | remove um Fish do banco de dados       |
+| DELETE | /fishs/:fishId  |    -/-      |   message   | remove um Fish do banco de dados       |
    
 ```
 
