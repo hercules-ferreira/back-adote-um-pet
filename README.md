@@ -23,7 +23,7 @@
 
 📜 Para a confecção do site, as principais ferramentas utilizadas, foram: JS ES6, Mongo DB, Express, jsonwebtoken, multer.
 <br>
-📜 Combinando com os métodos: GET, POST, PUT e DELETE. Veja a tabela abaixo
+📜 Combinando com os métodos: GET, POST, PUT e DELETE. Veja as tabelas abaixo
 <br>
 📜 Também foi implementado uma parte para a atualização e edição de imagem.
 <br>
