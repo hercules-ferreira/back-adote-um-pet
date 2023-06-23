@@ -21,7 +21,7 @@
 <img src="icon.png" align="right" />
 
 
-📜 Para a confecção do site, foi utilizado Mongo DB, Express, jsonwebtoken, multer.
+📜 Para a confecção do site, as principais ferramentas utilizadas, foram: JS ES6, Mongo DB, Express, jsonwebtoken, multer.
 <br>
 📜 Combinando com os métodos: GET, POST, PUT e DELETE. Veja a tabela abaixo
 <br>
