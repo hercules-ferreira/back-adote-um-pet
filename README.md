@@ -21,7 +21,6 @@
 
 
 📜 Para a confecção do site, foi utilizado Mongo DB, Express, jsonwebtoken, multer.
-combinação de pixels.
 <br>
 📜 Combinando com os métodos: GET, POST, PATCH e DELETE. Veja a tabela abaixo
 <br>
