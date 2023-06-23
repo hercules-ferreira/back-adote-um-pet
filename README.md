@@ -18,11 +18,12 @@
 
 <h1><span style="color:blue">
 <font size=30>Sobre o Site</font></span></h1>
+<img src="icon.png" align="right" />
 
 
 📜 Para a confecção do site, foi utilizado Mongo DB, Express, jsonwebtoken, multer.
 <br>
-📜 Combinando com os métodos: GET, POST, PATCH e DELETE. Veja a tabela abaixo
+📜 Combinando com os métodos: GET, POST, PUT e DELETE. Veja a tabela abaixo
 <br>
 📜 Também foi implementado uma parte para a atualização e edição de imagem.
 <br>
